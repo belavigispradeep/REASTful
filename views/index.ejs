@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Posts</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h1>TRUST</h1>
+    <% for(post of posts) { %>
+        <div>
+            <h3 class="user">@<%= post.username %></h3>
+            <h4 class="content"><%= post.content %></h4>
+            <hr>
+            <button><a href="http://localhost:8080/posts/<%= post.id %>">see details</a></button>
+        </div>
+            <% } %>
+
+
+    <br>
+    <hr>
+    <button><a href="http://localhost:8080/posts/new">Add Post</a></button>
+</body>
+</html>
