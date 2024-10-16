@@ -1,12 +1,16 @@
 const express=require("express");
 const app=express();
 const port=8080;
+const { v4: uuidv4 } = require('uuid');
+const methodOverride = require("method-override");
+
 
 const path=require("path");
 
 app.use(express.urlencoded({extended:true}));
+app.use(methodOverride("_method"));
 
-const { v4: uuidv4 } = require('uuid');
+
 
 
 app.set("view engine","ejs");
