@@ -6,23 +6,26 @@ const path=require("path");
 
 app.use(express.urlencoded({extended:true}));
 
+const { v4: uuidv4 } = require('uuid');
+
+
 app.set("view engine","ejs");
 app.set("views",path.join(__dirname,"views"));
 app.use(express.static(path.join(__dirname,"public")));
 
 let posts=[
     {
-        id:"1a",
+        id:uuidv4(),
         username:"tcs",
         content:"Harnessing cutting-edge technology and innovation for sustainable, purpose-driven transformations globally."
     },
     {
-        id:"2a",
+        id:uuidv4(),
         username:"microsoft",
         content:"We're on a mission to empower every person and every organization on the planet to achieve more."
     },
     {
-        id:"3a",
+        id:uuidv4(),
         username:"google",
         content:"Organizing the world's information and making it universally accessible and useful."
     },
@@ -36,7 +39,7 @@ app.get("/posts/new",(req,res)=>{
 });
 app.post("/posts",(req,res)=>{
     let {username,content}=req.body;
-    posts.push({username,content});
+    posts.push({id:uuidv4(),username,content});
     res.redirect("/posts");
 });
 app.get("/posts/:id",(req,res)=>{
